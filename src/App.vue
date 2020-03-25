@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <Map></Map>
-    <router-view/>
+    <Sidebar/>
+    <div class="content">
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
+import Sidebar from '@/components/Sidebar'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Sidebar
+  }
 }
 </script>
 
@@ -18,5 +25,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.content {
+    float: right;
+    width: 80%;
 }
 </style>

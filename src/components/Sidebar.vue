@@ -1,7 +1,6 @@
 <template>
-  <div class="home">
-    <Map></Map>
-    <SpotList></SpotList>
+  <div class="sidebar">
+    <h1>park.io</h1>
   </div>
 </template>
 
@@ -14,16 +13,16 @@ export default {
   components: {
     Map,
     SpotList
-  },
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
   }
 }
 </script>
 
 <style scoped>
+.sidebar {
+    float:left;
+    width: 20%;
+    position: fixed;
+}
 h1, h2 {
   font-weight: normal;
 }
