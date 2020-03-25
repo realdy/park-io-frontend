@@ -22,7 +22,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://park-io-backend.herokuapp.com/parkingspots')
+      .get('https://park-io-backend.herokuapp.com/parkingspots')
       .then(response => (this.info = response.data))
   }
 }
