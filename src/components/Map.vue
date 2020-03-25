@@ -1,6 +1,6 @@
 <template>
     <div class="map">
-        <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" :zoom=12 :center="[location.lon, location.lat]">
+        <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" :zoom=14 :center="[location.lon, location.lat]">
         <MglMarker v-for="coord in coordinates"
             v-bind:key="coord[0] + coord[1]"
             :coordinates="coord"
