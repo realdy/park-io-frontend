@@ -33,7 +33,8 @@ export default {
 
   created () {
     this.mapbox = Mapbox
-    var obj = this
+    window.test = this
+    const obj = this
     navigator.geolocation.getCurrentPosition(function (location) {
       obj.location.lat = location.coords.latitude
       obj.location.lon = location.coords.longitude
@@ -46,6 +47,7 @@ export default {
 @import url("https://api.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css");
 @import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.2.0/mapbox-gl-geocoder.css");
 .mapboxgl-canvas {
-    height: 500px;
+    max-height: 75vh;
+    width: 100%;
 }
 </style>

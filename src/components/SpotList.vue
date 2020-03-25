@@ -1,6 +1,5 @@
 <template>
-  <div class="spotlist">
-    <h1>Parking Spots</h1>
+  <div class="spotlist mt-4">
     <ul v-for="item in info" v-bind:key="item.address">
       <li>
           <p> {{ item.address }}</p>
@@ -29,9 +28,6 @@ export default {
 </script>
 
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 ul {
   list-style-type: none;
   padding: 0;

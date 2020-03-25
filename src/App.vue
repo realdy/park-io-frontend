@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
-    <Sidebar/>
-    <div class="content">
-      <router-view/>
+  <div id="app" class="container-fluid">
+    <div class="row">
+      <Sidebar />
+      <div class="col-lg-10">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -17,17 +19,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-.content {
-    float: right;
-    width: 80%;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="col-lg-2">
     <h1>park.io</h1>
   </div>
 </template>
@@ -18,20 +18,7 @@ export default {
 </script>
 
 <style scoped>
-.sidebar {
-    float:left;
-    width: 20%;
-    position: fixed;
-}
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
+h1 {
+  text-align: center;
 }
 </style>
