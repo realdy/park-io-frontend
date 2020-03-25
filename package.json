@@ -14,8 +14,10 @@
     "dependencies": {
         "axios": "^0.19.2",
         "express": "^4.17.1",
+        "mapbox-gl": "^1.9.0",
         "serve-static": "^1.14.1",
         "vue": "^2.5.2",
+        "vue-mapbox": "^0.4.1",
         "vue-router": "^3.0.1"
     },
     "devDependencies": {
