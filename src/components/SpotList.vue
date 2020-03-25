@@ -1,8 +1,21 @@
 <template>
   <div class="spotlist mt-4">
-    <ul v-for="item in locations" v-bind:key="item.address">
+    <ul v-for="(item, id) in locations" v-bind:key="item.address">
       <li>
-          <p> {{ item.address }}</p>
+          <b-button v-b-toggle="'collapse-' + id" variant="secondary">{{ item.address }}</b-button>
+          <b-collapse v-bind:id="'collapse-' + id" class="mt-2">
+            <b-card>
+              <p class="card-text">
+                <strong>Address:</strong> {{item.address}}
+                <br>
+                <strong>Rate:</strong> ${{item.rate}}
+                <br>
+                <strong>Contact Info:</strong> {{item.contact}}
+                <br>
+                <strong>Description:</strong> {{item.description}}
+              </p>
+            </b-card>
+          </b-collapse>
       </li>
     </ul>
   </div>

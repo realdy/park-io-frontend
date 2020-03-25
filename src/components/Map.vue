@@ -4,7 +4,7 @@
         <MglMarker v-for="coord in coordinates"
             v-bind:key="coord[0] + coord[1]"
             :coordinates="coord"
-            color='blue'
+            color='#007bff'
             />
         </MglMap>
     </div>
