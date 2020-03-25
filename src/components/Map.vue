@@ -2,7 +2,7 @@
     <div class="map">
         <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" :zoom=12 :center="[location.lon, location.lat]">
         <MglMarker v-for="coord in coordinates"
-            v-bind:key="coord"
+            v-bind:key="coord[0] + coord[1]"
             :coordinates="coord"
             color='blue'
             />
@@ -23,14 +23,22 @@ export default {
     return {
       accessToken: 'pk.eyJ1IjoicHJhdGlrdmFpZHlhIiwiYSI6ImNrODZ2NzM1MDBpYXAzbm1ydDJyZm00dW0ifQ.B_iyhQhsrVLYbMMxLTNQ8Q', // your access token. Needed if you using Mapbox maps
       mapStyle: 'mapbox://styles/mapbox/streets-v11', // your map style
-      coordinates: [[-83.7291924, 42.2731526], [-83.7455718, 42.2704053]],
-      location: {
+      location: { // default current location
         lon: -83.7287936,
         lat: 42.2739968
       }
     }
   },
-
+  computed: {
+    coordinates () {
+      return this.$store.state.spots.locations.data.map(item => {
+        return [
+          item.lat,
+          item.lon
+        ]
+      })
+    }
+  },
   created () {
     this.mapbox = Mapbox
     window.test = this

@@ -1,6 +1,6 @@
 <template>
   <div class="spotlist mt-4">
-    <ul v-for="item in info" v-bind:key="item.address">
+    <ul v-for="item in locations" v-bind:key="item.address">
       <li>
           <p> {{ item.address }}</p>
       </li>
@@ -14,15 +14,19 @@ import axios from 'axios'
 export default {
   name: 'SpotList',
   data () {
-    return {
-      info: [],
-      msg: 'Welcome to Your Vue.js App'
+    return {}
+  },
+  computed: {
+    locations () {
+      return this.$store.state.spots.locations.data
     }
   },
   mounted () {
     axios
       .get('https://park-io-backend.herokuapp.com/parkingspots')
-      .then(response => (this.info = response.data))
+      .then(response => {
+        this.$store.commit('spots/setLocations', response)
+      })
   }
 }
 </script>
