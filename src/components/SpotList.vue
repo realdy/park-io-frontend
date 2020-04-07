@@ -2,7 +2,7 @@
   <div class="spotlist mt-4">
     <ul v-for="(item, id) in locations" v-bind:key="item.address">
       <li>
-          <b-button v-b-toggle="'collapse-' + id" variant="secondary">{{ item.address }}</b-button>
+          <b-button v-b-toggle="'collapse-' + id" variant="success" :class="{'btn-danger': item.occupied}">{{ item.address }}</b-button>
           <b-collapse v-bind:id="'collapse-' + id" class="mt-2">
             <b-card>
               <p class="card-text">
@@ -13,6 +13,11 @@
                 <strong>Contact Info:</strong> {{item.contact}}
                 <br>
                 <strong>Description:</strong> {{item.description}}
+                <br>
+                <label>
+                  <input type="checkbox" v-model="item.occupied" @change="updateOccupation(id)">
+                  <span class="lever"></span> Occupied
+                </label>
               </p>
             </b-card>
           </b-collapse>
@@ -40,6 +45,20 @@ export default {
       .then(response => {
         this.$store.commit('spots/setLocations', response)
       })
+  },
+  methods: {
+    updateOccupation: function (id) {
+      let targetSpot = this.$store.state.spots.locations.data[id]
+      axios
+        .put(
+          targetSpot.url,
+          targetSpot,
+          {'headers': {'Content-Type': 'application/json'}}
+        )
+        .then(response => {
+          console.log(response.status)
+        })
+    }
   }
 }
 </script>
