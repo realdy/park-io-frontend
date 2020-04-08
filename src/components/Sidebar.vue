@@ -26,8 +26,13 @@ export default {
     SpotList
   },
   data () {
-    return {
-      isActive: 0
+    switch (this.$router.currentRoute.name) {
+      case 'SpotAdding':
+        return { isActive: 1 }
+      case 'Help':
+        return { isActive: 2 }
+      default:
+        return { isActive: 0 }
     }
   },
   methods: {
