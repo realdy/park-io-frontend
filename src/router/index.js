@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Help from '@/components/Help'
 import SpotAdding from '@/components/SpotAdding'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/add',
       name: 'SpotAdding',
       component: SpotAdding
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ]
 })

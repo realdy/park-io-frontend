@@ -9,6 +9,9 @@
         <a class="nav-link" :class="{'active': isActive === 1}" href="/#/add" @click="navigate(1)">Add a Spot</a>
       </li>
       <li class="nav-item mt-1">
+        <a class="nav-link" :class="{'active': isActive === 3}" href="/#/login" @click="navigate(3)">Login</a>
+      </li>
+      <li class="nav-item mt-1">
         <a class="nav-link" :class="{'active': isActive === 2}" href="/#/help" @click="navigate(2)">Help</a>
       </li>
     </ul>
@@ -31,6 +34,8 @@ export default {
         return { isActive: 1 }
       case 'Help':
         return { isActive: 2 }
+      case 'Login':
+        return { isActive: 3 }
       default:
         return { isActive: 0 }
     }
