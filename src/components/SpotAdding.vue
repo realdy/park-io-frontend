@@ -2,30 +2,58 @@
     <div class="spot-adding">
         <h2>Add a New Spot</h2>
         <br>
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="inputAddress">Spot Address</label>
-                <input type="text" class="form-control" id="inputAddress" aria-describedby="addressHelp" placeholder="Enter your spot's address" v-model="form['address']">
-                <small id="addressHelp" class="form-text text-muted">eg. 912 Sybil Street, Ann Arbor, Michigan 48104, United States</small>
-            </div>
-            <div class="form-group">
-                <label for="inputRate">Rent Rate</label>
-                <input type="number" class="form-control" id="inputRate" placeholder="Enter your desired rent rate" v-model.number="form['rate']">
-            </div>
-            <div class="form-group">
-                <label for="inputContact">Contact Info</label>
-                <input type="text" class="form-control" id="inputContact" aria-describedby="contactHelp" placeholder="Enter your contact info" v-model="form['contact']">
-                <small id="contactHelp" class="form-text text-muted">eg. Venmo @apple</small>
-            </div>
-            <div class="form-group">
-                <label for="inputDescription">Description</label>
-                <input type="text" class="form-control" id="inputDescription" placeholder="Enter your description to your spot" v-model="form['description']">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-
+        <b-form @submit.prevent="submitForm">
+          <b-form-group
+              label="Spot Address"
+              label-for="inputAddress"
+              description="eg. 912 Sybil Street, Ann Arbor, Michigan 48104, United States"
+              >
+              <b-form-input
+              id="inputAddress"
+              v-model="form.address"
+              type="text"
+              required
+              placeholder="Enter the address of your spot"
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group
+              label="Rent Rate"
+              label-for="inputRate"
+              >
+              <b-form-input
+              id="inputRate"
+              v-model="form.rate"
+              type="number"
+              required
+              placeholder="Enter your desired rent rate"
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group
+              label="Contact Info"
+              label-for="inputContact"
+              description="eg. Venmo @apple"
+              >
+              <b-form-input
+              id="inputContact"
+              v-model="form.contact"
+              type="text"
+              required
+              placeholder="Enter your contact info"
+            ></b-form-input>
+          </b-form-group>
+          <b-form-group
+              label="Description"
+              label-for="inputDescription"
+              >
+              <b-form-input
+              id="inputDescription"
+              v-model="form.description"
+              type="text"
+              placeholder="Enter the description of your spot"
+            ></b-form-input>
+          </b-form-group>
+          <b-button type="submit" variant="success">Save</b-button>
+        </b-form>
     </div>
 </template>
 
