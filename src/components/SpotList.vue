@@ -21,8 +21,9 @@
                   <span class="lever"></span> Occupied
                 </label>
                 <br>
-                <button type="button" class="btn btn-danger" @click="deleteSpot(id)">Delete</button>
               </p>
+              <b-button> Edit </b-button>
+              <b-button class="btn-danger" @click="deleteSpot(id)">Delete</b-button>
             </b-card>
           </b-collapse>
       </li>
