@@ -1,10 +1,10 @@
 <template>
     <div class="map">
         <MglMap :accessToken="accessToken" :mapStyle.sync="mapStyle" :zoom=14 :center="[location.lon, location.lat]">
-        <MglMarker v-for="coord in coordinates"
-            v-bind:key="coord[0] + coord[1]"
-            :coordinates="coord"
-            color='#007bff'
+        <MglMarker v-for="spot in spots"
+            v-bind:key="spot.coord[0] + spot.coord[1]"
+            :coordinates="spot.coord"
+            :color="spot.color"
             />
         </MglMap>
     </div>
@@ -30,12 +30,12 @@ export default {
     }
   },
   computed: {
-    coordinates () {
+    spots () {
       return this.$store.state.spots.locations.data.map(item => {
-        return [
-          item.lat,
-          item.lon
-        ]
+        return {
+          coord: [item.lat, item.lon],
+          color: item.occupied ? '#bd2130' : '#1e7e34'
+        }
       })
     }
   },
