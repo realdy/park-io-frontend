@@ -2,36 +2,6 @@
     <div class="spot-adding">
         <h2>Add a New Spot</h2>
         <br>
-<<<<<<< HEAD
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="inputAddress">Spot Address</label>
-                <input type="text" class="form-control" id="inputAddress" aria-describedby="addressHelp" placeholder="Enter your spot's address" v-model="form['address']">
-                <small id="addressHelp" class="form-text text-muted">eg. 912 Sybil Street, Ann Arbor, Michigan 48104, United States</small>
-            </div>
-            <div class="form-group">
-                <label for="inputRate">Rent Rate</label>
-                <input type="number" class="form-control" id="inputRate" placeholder="Enter your desired rent rate" v-model.number="form['rate']">
-            </div>
-            <div class="form-group">
-                <label for="inputContact">Contact Info</label>
-                <input type="text" class="form-control" id="inputContact" aria-describedby="contactHelp" placeholder="Enter your contact info" v-model="form['contact']">
-                <small id="contactHelp" class="form-text text-muted">eg. Venmo @apple</small>
-            </div>
-            <div class="form-group">
-                <label for="inputDescription">Description</label>
-                <input type="text" class="form-control" id="inputDescription" placeholder="Enter your description to your spot" v-model="form['description']">
-            </div>
-            <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input type="text" class="form-control" id="inputEmail" placeholder="Enter your email to recieve a confirmation password" v-model="form['email']">
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-
-=======
         <b-form @submit.prevent="submitForm">
           <b-form-group
               label="Spot Address"
@@ -82,9 +52,19 @@
               placeholder="Enter the description of your spot"
             ></b-form-input>
           </b-form-group>
+           <b-form-group
+              label="Email"
+              label-for="inputEmail"
+              >
+              <b-form-input
+              id="inputEmail"
+              v-model="form.email"
+              type="text"
+              placeholder="Enter your email to recieve a confirmation password"
+            ></b-form-input>
+          </b-form-group>
           <b-button type="submit" variant="success">Save</b-button>
         </b-form>
->>>>>>> upstream/master
     </div>
 </template>
 
