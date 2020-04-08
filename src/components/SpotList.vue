@@ -91,21 +91,7 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get('https://park-io-backend.herokuapp.com/parkingspots')
-      .then(response => {
-        response.data.sort(function (spot1, spot2) {
-          return spot1.occupied ? 1 : -1
-        })
-
-        let locations = response.data.map((spot) => {
-          return {
-            ...spot,
-            edit: false
-          }
-        })
-        this.$store.commit('spots/setLocations', locations)
-      })
+    this.$store.dispatch('spots/getLocations')
   },
   methods: {
     updateOccupation: function (id) {
@@ -134,6 +120,7 @@ export default {
         )
         .then(response => {
           targetSpot.edit = false
+          this.$store.dispatch('spots/getLocations')
         })
     }
   }
