@@ -20,6 +20,8 @@
                   <input type="checkbox" v-model="item.occupied" @change="updateOccupation(id)">
                   <span class="lever"></span> Occupied
                 </label>
+                <br>
+                <button type="button" class="btn btn-danger" @click="deleteSpot(id)">Delete</button>
               </p>
             </b-card>
           </b-collapse>
@@ -45,9 +47,6 @@ export default {
     axios
       .get('https://park-io-backend.herokuapp.com/parkingspots')
       .then(response => {
-        // let freeSpots = []
-        // let occupiedSpots = []
-        console.log(response)
         response.data.sort(function (spot1, spot2) {
           return spot1.occupied ? 1 : -1
         })
@@ -66,6 +65,16 @@ export default {
         .then(response => {
           console.log(response.status)
         })
+    },
+    deleteSpot: function (id) {
+      let targetSpot = this.$store.state.spots.locations.data[id]
+      axios
+        .delete(targetSpot.url)
+        .then(response => {
+          console.log(response.status)
+          this.$store.state.spots.locations.data.splice(id, 1)
+        })
+        .catch(error => console.log(error))
     }
   }
 }
