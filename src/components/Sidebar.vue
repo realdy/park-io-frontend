@@ -3,13 +3,13 @@
     <h1 class="mt-5">park.io</h1>
     <ul class="nav nav-pills nav-fill flex-column mt-5">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Available Spots</a>
+        <a class="nav-link" :class="{'active': isActive === 0}" href="/" @click="navigate(0)">Available Spots</a>
       </li>
       <li class="nav-item mt-1">
-        <a class="nav-link" href="#">Add Spot</a>
+        <a class="nav-link" :class="{'active': isActive === 1}" href="/#/add" @click="navigate(1)">Add a Spot</a>
       </li>
       <li class="nav-item mt-1">
-        <a class="nav-link" href="#">Help</a>
+        <a class="nav-link" :class="{'active': isActive === 2}" href="/#/help" @click="navigate(2)">Help</a>
       </li>
     </ul>
   </div>
@@ -24,6 +24,16 @@ export default {
   components: {
     Map,
     SpotList
+  },
+  data () {
+    return {
+      isActive: 0
+    }
+  },
+  methods: {
+    navigate: function (active) {
+      this.isActive = active
+    }
   }
 }
 </script>

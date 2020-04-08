@@ -1,5 +1,7 @@
 <template>
   <div class="spotlist mt-4">
+    <h2>Spot List</h2>
+    <br>
     <ul v-for="(item, id) in locations" v-bind:key="item.address">
       <li>
           <b-button v-b-toggle="'collapse-' + id" variant="success" :class="{'btn-danger': item.occupied}">{{ item.address }}</b-button>
@@ -43,6 +45,12 @@ export default {
     axios
       .get('https://park-io-backend.herokuapp.com/parkingspots')
       .then(response => {
+        // let freeSpots = []
+        // let occupiedSpots = []
+        console.log(response)
+        response.data.sort(function (spot1, spot2) {
+          return spot1.occupied ? 1 : -1
+        })
         this.$store.commit('spots/setLocations', response)
       })
   },
@@ -71,5 +79,10 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
+}
+h2 {
+  border-bottom-style: solid;
+  border-width: 1px;
+  padding-bottom: 5px
 }
 </style>
