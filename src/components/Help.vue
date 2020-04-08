@@ -8,7 +8,7 @@
             accessible, available, and close to their desired destinations. The
             application allows renters to add available spots for the public to
             view. Parkers will then be able to reserve individual parking spots
-            for a fixed or varibale time period (at different rates).
+            for a fixed or variable time period (at different rates).
         </div>
     </div>
 </template>
