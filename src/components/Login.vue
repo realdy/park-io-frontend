@@ -21,9 +21,9 @@
   firebase.auth().signInWithRedirect(provider);
   firebase.auth().getRedirectResult().then(function(result) {
   if (result.credential) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      // ...
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // ...
     }
     // The signed-in user info.
     var user = result.user;
@@ -41,15 +41,11 @@
 
 <template>
     <div class="help">
-        <h2>Help Page</h2>
+        <h2>Login with Google</h2>
         <div id="detail">
             <br>
-            Park.IO is a web app that allows users to successfully navigate the
-            winter conditions of Michigan by identifying parking spots that are
-            accessible, available, and close to their desired destinations. The
-            application allows renters to add available spots for the public to
-            view. Parkers will then be able to reserve individual parking spots
-            for a fixed or variable time period (at different rates).
+            --Place Holder--
+            FireBase info in actual code
         </div>
     </div>
 </template>
