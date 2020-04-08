@@ -1,8 +1,6 @@
 // initial state
 const state = {
-  locations: {
-    data: []
-  }
+  locations: []
 }
 
 // getters
@@ -15,6 +13,9 @@ const actions = {}
 const mutations = {
   setLocations (state, locations) {
     state.locations = locations
+  },
+  editSpot (state, id) {
+    state.locations[id].edit = true
   }
 }
 

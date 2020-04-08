@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     spots () {
-      return this.$store.state.spots.locations.data.map(item => {
+      return this.$store.state.spots.locations.map(item => {
         return {
           coord: [item.lat, item.lon],
           color: item.occupied ? '#bd2130' : '#1e7e34'
