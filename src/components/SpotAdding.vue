@@ -52,6 +52,17 @@
               placeholder="Enter the description of your spot"
             ></b-form-input>
           </b-form-group>
+           <b-form-group
+              label="Email"
+              label-for="inputEmail"
+              >
+              <b-form-input
+              id="inputEmail"
+              v-model="form.email"
+              type="text"
+              placeholder="Enter your email to recieve a confirmation password"
+            ></b-form-input>
+          </b-form-group>
           <b-button type="submit" variant="success">Save</b-button>
         </b-form>
     </div>
@@ -59,6 +70,7 @@
 
 <script>
 import axios from 'axios'
+import emailjs from 'emailjs-com'
 
 export default {
   name: 'SpotAdding',
@@ -69,14 +81,44 @@ export default {
         'address': '',
         'rate': 0,
         'contact': '',
-        'description': ''
+        'description': '',
+        'email': '',
+        'password': ''
+      },
+      templateParams: {
+        email: ' ',
+        password: ' ',
+        address: ' '
       }
     }
   },
   methods: {
+    genPassword: function () {
+      var length = 8
+      var charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+      var retVal = ''
+      for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n))
+      }
+      this.form['password'] = retVal
+    },
+    sendEmail: function () {
+      this.genPassword()
+      this.templateParams.email = this.form['email']
+      this.templateParams.password = this.form['password']
+      this.templateParams.address = this.form['address']
+      console.log(this.templateParams)
+      emailjs.send('default_service', 'services', this.templateParams, 'user_sIZcXeXbPGuyJlE7Cg2du')
+        .then((result) => {
+          console.log('SUCCESS!', result.status, result.text)
+        }, (error) => {
+          console.log('FAILED...', error)
+        })
+    },
     submitForm: function (submitEvent) {
       console.log(this.form)
       let targetSpot = this.form
+      this.sendEmail()
       axios
         .post(
           'https://park-io-backend.herokuapp.com/parkingspots/',
